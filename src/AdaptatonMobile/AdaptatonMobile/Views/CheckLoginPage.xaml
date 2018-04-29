@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="AdaptatonMobile.Views.CheckLoginPage">
+    <ContentPage.Content>
+        <StackLayout Padding="16" VerticalOptions="Center">
+            <Image Source="alayuda" Margin="0,0,0,20"/>
+            <Label Text="¿Cuál es tu DNI?" />
+            <Entry Text="{Binding DNI}" Keyboard="Numeric"/>
+            <Button Text="Siguiente" BackgroundColor="{StaticResource Blue}" 
+                    Margin="0,8,0,0"
+                    Command="{Binding CheckDNICommand}"/>
+            <ActivityIndicator IsRunning="{Binding IsBusy}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
