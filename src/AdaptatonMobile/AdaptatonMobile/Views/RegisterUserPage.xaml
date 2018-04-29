@@ -1,33 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="AdaptatonMobile.Views.RegisterUserPage">
+             x:Class="AdaptatonMobile.Views.RegisterUserPage"
+             Title="Registro">
     <ContentPage.Content>
         <Grid Padding="16">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="20" />
-                <RowDefinition Height="50" />
+                <RowDefinition Height="34" />
                 <RowDefinition Height="20" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Label Text="¿Tienes alguna discapacidad?" Grid.Row="1" Grid.ColumnSpan="2"/>
-            <Picker Grid.Row="2" Grid.ColumnSpan="2" Margin="0,0,0,10" SelectedIndex="0">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>No</x:String>
-                        <x:String>Sí</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+            <Label Text="¿Tienes alguna discapacidad?" Grid.Row="0" Grid.ColumnSpan="2"/>
+            <Switch IsToggled="false" />
             <!--<Button Text="Sí" Grid.Row="2" Margin="0,0,0,10" BackgroundColor="{StaticResource Green}" />
             <Button Text="No" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10" BackgroundColor="{StaticResource Pink}"/>-->
-            <Label Text="¿Cuál es tu número telefónico?" Grid.Row="3" Grid.ColumnSpan="2"/>
-            <Entry Placeholder="Celular" Grid.Row="4" Margin="0,0,0,10"/>
-            <Entry Placeholder="Fijo" Grid.Row="4" Grid.Column="1" Margin="0,0,0,10"/>
-            <Button Text="Ingresar" Grid.Row="5" Grid.ColumnSpan="2" VerticalOptions="Start"
+            <Label Text="¿Cuál es tu número telefónico?" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <Entry Placeholder="Celular" Grid.Row="2" Margin="0,0,0,10" Text="{Binding Cellphone}"/>
+            <Entry Placeholder="Fijo" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10" Text="{Binding Phone}"/>
+            <Button Text="Ingresar" Grid.Row="3" Grid.ColumnSpan="2" VerticalOptions="Start"
+                    Command="{Binding RegisterUserCommand}"
                     BackgroundColor="{StaticResource Blue}"/>
         </Grid>
     </ContentPage.Content>

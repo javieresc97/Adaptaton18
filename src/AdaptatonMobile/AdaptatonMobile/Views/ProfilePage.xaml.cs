@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace AdaptatonMobile.Views
 {
-    public partial class MainMapPage : ContentPage
+    public partial class ProfilePage : ContentPage
     {
-        public MainMapPage()
+        public ProfilePage()
         {
             InitializeComponent();
         }

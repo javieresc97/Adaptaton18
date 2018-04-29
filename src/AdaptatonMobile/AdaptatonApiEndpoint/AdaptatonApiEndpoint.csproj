@@ -35,6 +35,7 @@
     <Compile Include="Models\Error.cs" />
     <Compile Include="AdaptatonEndpoint.cs" />
     <Compile Include="Models\Credentials.cs" />
+    <Compile Include="Models\Incident.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

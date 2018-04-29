@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using AdaptatonApiEndpoint.Models;
 
 namespace AdaptatonApiEndpoint
 {
@@ -12,12 +14,44 @@ namespace AdaptatonApiEndpoint
         {
         }
 
-        protected override string BaseUrl => "";
+        protected override string BaseUrl => "http://adaptaton18.azurewebsites.net/api/";
 
-        public async Task<bool> CheckDNI(string dni)
+        public async Task<User> CheckDNI(string dni)
         {
-            return true;
-            //return await GetApiAsync<bool>("");
+            try
+            {
+                return await GetApiAsync<User>($"User/FindByDni/{dni}");
+            }
+            catch (ApiException ex)
+            {
+                if (ex.ErrorCode == System.Net.HttpStatusCode.NotFound)
+                    return null;
+                throw;
+            }
+        }
+
+        public async Task<User> Authenticate(Credentials credentials)
+        {
+            try
+            {
+                return await PostApiAsync<User>("User/Auth", credentials);
+            }
+            catch (ApiException ex)
+            {
+                if (ex.ErrorCode == System.Net.HttpStatusCode.NotFound)
+                    return null;
+                throw;
+            }
+        }
+
+        public async Task SaveIncident(IncidentRegister incident)
+        {
+            await PostApiAsync("Pins", incident);
+        }
+
+        public async Task<List<Incident>> GetIncidents()
+        {
+            return await GetApiAsync<List<Incident>>("Pins");
         }
     }
 }

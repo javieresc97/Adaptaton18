@@ -4,9 +4,9 @@
              x:Class="AdaptatonMobile.Views.LoginPage">
     <ContentPage.Content>
         <StackLayout Padding="16" VerticalOptions="Center">
-            <Label Text="DNI" />
-            <Label Text="{Binding Credentials.DNI}" Margin="0,0,0,8"/>
-            <Label Text="¿Cuál es tu contraseña?" />
+            <Label Text="DNI" TextColor="#212121" FontSize="Medium"/>
+            <Label Text="{Binding Credentials.Dni}" Margin="0,0,0,8" />
+            <Label Text="¿Cuál es tu contraseña?" TextColor="#212121" FontSize="Medium" />
             <Entry Text="{Binding Credentials.Password}" IsPassword="true"/>
             <Button Text="Ingresar" BackgroundColor="{StaticResource Blue}" Margin="0,8,0,0"
                     Command="{Binding LoginCommand}"/>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="AdaptatonMobile.Views.UnsafeZonePage">
+    <ContentPage.Content>
+        <StackLayout Padding="16">
+            <Label Text="¿Qué problema tienes?" />
+            <Picker x:Name="ProblemPicker" Margin="0,0,0,10" SelectedItem="{Binding Incident.Name}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Inundación</x:String>
+                        <x:String>Derrumbe</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Label Text="Descripción" />
+            <Entry Text="{Binding Incident.Description}" Margin="0,0,0,10"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="¿Necesitas ayuda?" HorizontalOptions="StartAndExpand" />
+                <Switch IsToggled="{Binding Incident.Help}" />
+            </StackLayout>
+            <!--<Picker x:Name="HelpPicker" Margin="0,0,0,10" SelectedItem="{Binding Incident.Help}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Sí</x:String>
+                        <x:String>No</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>-->
+            <Label Text="Evidencia" />
+            <Button Text="Agrega una foto" BackgroundColor="#26547C" Command="{Binding TakePicCommand}" />
+            <Label Text="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                   FontSize="Small"/>
+            <Button Text="Enviar" BackgroundColor="{StaticResource Pink}" Margin="0,10,0,0"
+                    Command="{Binding SendCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

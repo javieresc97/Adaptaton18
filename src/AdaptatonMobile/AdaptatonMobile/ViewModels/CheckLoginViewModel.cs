@@ -35,7 +35,7 @@ namespace AdaptatonMobile.ViewModels
                 else
                 {
                     var isUserRegistered = await AdaptatonEndpoint.Instance.CheckDNI(DNI);
-                    if (isUserRegistered)
+                    if (isUserRegistered != null)
                     {
                         await NavigateTo(new LoginPage(DNI));
                     }

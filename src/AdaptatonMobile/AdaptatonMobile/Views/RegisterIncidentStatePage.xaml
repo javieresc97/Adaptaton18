@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="AdaptatonMobile.Views.RegisterIncidentStatePage"
+             Title="Nuevo reporte">
+    <ContentPage.Content>
+        <StackLayout Padding="16" Spacing="32">
+            <Button Text="Estoy en zona segura" 
+                    BackgroundColor="{StaticResource Green}" 
+                    VerticalOptions="EndAndExpand"
+                    HeightRequest="114"
+                    Command="{Binding SafeZoneCommand}"/>
+            <Button Text="Estoy en zona insegura" 
+                    BackgroundColor="{StaticResource Pink}" 
+                    VerticalOptions="StartAndExpand"
+                    HeightRequest="114"
+                    Command="{Binding UnsafeZoneCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

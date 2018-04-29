@@ -4,4 +4,7 @@
             xmlns:pages="clr-namespace:AdaptatonMobile.Views"
             x:Class="AdaptatonMobile.Views.HomePage">
     <pages:MainMapPage Title="Inicio" />
+    <pages:ContactsPage Title="Contacto" />
+    <pages:PointsPage Title="Ayuda" />
+    <pages:ProfilePage Title="Perfil" />    
 </TabbedPage>
