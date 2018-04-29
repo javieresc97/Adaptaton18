@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AdaptatonMobile.Views.RegisterReportPage">
+    <ContentPage.Content>
+        <StackLayout Padding="16" Spacing="4">
+            <Label Text="Tipo de incidencia" />
+            <Picker />
+
+            <BoxView Margin="0,2" HeightRequest="0.5"/>
+            
+            <Label Text="Tipo de ayuda" />
+            <Picker />
+
+            <BoxView Margin="0,2" HeightRequest="0.5"/>
+            
+            <Label Text="¿Perteneces a una junta vecinal?" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Sí" HorizontalOptions="FillAndExpand"/>
+                <Button Text="No" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <BoxView Margin="0,2" HeightRequest="0.5"/>
+            
+            <Label Text="Descripción" />
+            <Entry Text="" Placeholder="(opcional)" />
+
+            <BoxView Margin="0,2" HeightRequest="0.5"/>
+            
+            <Button Text="Enviar" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
