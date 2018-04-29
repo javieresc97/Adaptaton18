@@ -17,6 +17,7 @@ namespace AdaptatonApi.Controllers.Api
     public class UsersController : ApiController
     {
         private AdaptatonContext db = new AdaptatonContext();
+        
 
         // GET: api/Users
         public IQueryable<User> GetUsers()
@@ -155,6 +156,29 @@ namespace AdaptatonApi.Controllers.Api
                 Disability = auth.Disability,
                 Phone = auth.Phone,
                 Cellphone = auth.Cellphone
+            };
+
+            return Ok(user);
+        }
+        [Route("FindByDni/{dni}")]
+        [HttpGet]
+        public async Task<IHttpActionResult> FindByDni(string dni)
+        {
+            var userExist = await db.Users.FirstOrDefaultAsync(u => u.Dni == dni);
+
+
+            if (userExist == null) return NotFound();
+
+            var user = new UserGet()
+            {
+                Id = userExist.Id,
+                Name = userExist.Name,
+                LastName = userExist.LastName,
+                Dni = userExist.Dni,
+                Group = userExist.Group,
+                Disability = userExist.Disability,
+                Phone = userExist.Phone,
+                Cellphone = userExist.Cellphone
             };
 
             return Ok(user);

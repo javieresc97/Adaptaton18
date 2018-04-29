@@ -12,23 +12,21 @@ namespace AdaptatonApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Pin
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Pin()
         {
             this.Alerts = new HashSet<Alert>();
         }
     
         public string Id { get; set; }
         public string Name { get; set; }
-        public string LastName { get; set; }
-        public string Dni { get; set; }
-        public string Password { get; set; }
-        public bool Group { get; set; }
-        public bool Disability { get; set; }
-        public string Phone { get; set; }
-        public string Cellphone { get; set; }
+        public decimal Latitude { get; set; }
+        public decimal Longitude { get; set; }
+        public bool Secure { get; set; }
+        public System.DateTime CreatedAt { get; set; }
+        public System.DateTime UpdatedAt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Alert> Alerts { get; set; }

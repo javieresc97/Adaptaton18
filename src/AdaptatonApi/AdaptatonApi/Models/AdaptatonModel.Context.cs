@@ -12,6 +12,8 @@ namespace AdaptatonApi.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class AdaptatonContext : DbContext
     {
@@ -25,6 +27,45 @@ namespace AdaptatonApi.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Alert> Alerts { get; set; }
+        public virtual DbSet<Pin> Pins { get; set; }
         public virtual DbSet<User> Users { get; set; }
+    
+        public virtual int CREATE_INCIDENT_SP(string uSERID, string pINNAME, Nullable<decimal> pINLATITUDE, Nullable<decimal> pINLONGITUDE, Nullable<bool> pINSECURE, string aLERTPHOTO, string aLERTDESCRIPTION, Nullable<bool> aLERTHELP)
+        {
+            var uSERIDParameter = uSERID != null ?
+                new ObjectParameter("USERID", uSERID) :
+                new ObjectParameter("USERID", typeof(string));
+    
+            var pINNAMEParameter = pINNAME != null ?
+                new ObjectParameter("PINNAME", pINNAME) :
+                new ObjectParameter("PINNAME", typeof(string));
+    
+            var pINLATITUDEParameter = pINLATITUDE.HasValue ?
+                new ObjectParameter("PINLATITUDE", pINLATITUDE) :
+                new ObjectParameter("PINLATITUDE", typeof(decimal));
+    
+            var pINLONGITUDEParameter = pINLONGITUDE.HasValue ?
+                new ObjectParameter("PINLONGITUDE", pINLONGITUDE) :
+                new ObjectParameter("PINLONGITUDE", typeof(decimal));
+    
+            var pINSECUREParameter = pINSECURE.HasValue ?
+                new ObjectParameter("PINSECURE", pINSECURE) :
+                new ObjectParameter("PINSECURE", typeof(bool));
+    
+            var aLERTPHOTOParameter = aLERTPHOTO != null ?
+                new ObjectParameter("ALERTPHOTO", aLERTPHOTO) :
+                new ObjectParameter("ALERTPHOTO", typeof(string));
+    
+            var aLERTDESCRIPTIONParameter = aLERTDESCRIPTION != null ?
+                new ObjectParameter("ALERTDESCRIPTION", aLERTDESCRIPTION) :
+                new ObjectParameter("ALERTDESCRIPTION", typeof(string));
+    
+            var aLERTHELPParameter = aLERTHELP.HasValue ?
+                new ObjectParameter("ALERTHELP", aLERTHELP) :
+                new ObjectParameter("ALERTHELP", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CREATE_INCIDENT_SP", uSERIDParameter, pINNAMEParameter, pINLATITUDEParameter, pINLONGITUDEParameter, pINSECUREParameter, aLERTPHOTOParameter, aLERTDESCRIPTIONParameter, aLERTHELPParameter);
+        }
     }
 }
